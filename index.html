@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ian Harley Marshall | Marine Artist Portfolio</title>
+    <style>
+        /* Modern Minimalist Art Theme */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: "Georgia", serif;
+            background-color: #fbfbfc;
+            color: #1e252b;
+            line-height: 1.7;
+            padding: 3rem 1.5rem;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* Biography Section */
+        header {
+            margin-bottom: 4rem;
+            border-bottom: 2px solid #eef2f5;
+            padding-bottom: 3.5rem;
+        }
+        h1 { font-size: 3rem; font-weight: 300; margin-bottom: 0.5rem; color: #0d1318; letter-spacing: -0.5px; }
+        .subtitle { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; color: #5c6b73; margin-bottom: 2rem; }
+        .bio { max-width: 850px; font-size: 1.15rem; color: #333f48; margin-bottom: 1.5rem; }
+        
+        /* Estate Contact Panel */
+        .estate-contact-panel {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            max-width: 850px;
+        }
+        .estate-contact-panel h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: #0d1318; font-weight: 600; }
+        .estate-contact-panel p { font-size: 1.05rem; color: #475569; margin-bottom: 1rem; }
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .contact-person {
+            background: #fff;
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+        }
+        .contact-person strong { display: block; color: #1e293b; font-size: 1.1rem; }
+        .contact-person span { font-size: 0.9rem; color: #64748b; font-family: sans-serif; text-transform: uppercase; }
+        .contact-person a { color: #16a085; text-decoration: none; font-family: sans-serif; font-size: 0.95rem; display: block; margin-top: 0.5rem; }
+        .contact-person a:hover { text-decoration: underline; }
+
+        /* Publications & Monographs Section */
+        .books-section {
+            background-color: #f3f6f8;
+            padding: 2rem;
+            border-left: 4px solid #2c3e50;
+            margin-top: 2.5rem;
+            max-width: 850px;
+        }
+        .books-section h3 { font-size: 1.25rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; color: #1a252f; }
+        .books-list { list-style: square inside; font-size: 1.05rem; }
+        .books-list li { margin-bottom: 0.6rem; }
+        .books-list a { color: #16a085; text-decoration: none; font-style: italic; font-weight: bold; }
+        .books-list a:hover { text-decoration: underline; }
+
+        /* Categorized Dimensions Navigation */
+        .nav-dims {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            background: #fff;
+            padding: 1rem;
+            border: 1px solid #eef2f5;
+        }
+        .nav-dims a {
+            font-family: sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #2c3e50;
+            padding: 0.4rem 0.8rem;
+            border: 1px solid #cbd5e1;
+            transition: all 0.2s ease;
+        }
+        .nav-dims a:hover { background: #2c3e50; color: #fff; }
+
+        /* Section Titles for Dimensions */
+        .dimension-group {
+            margin: 5rem 0 2rem 0;
+            border-bottom: 2px dashed #cbd5e1;
+            padding-bottom: 0.75rem;
+        }
+        .dimension-title { font-size: 2rem; font-weight: 400; color: #2c3e50; }
+
+        /* Paintings Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 3rem;
+        }
+        .art-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
+            transition: transform 0.2s ease;
+        }
+        .art-card:hover { transform: translateY(-3px); }
+        .art-image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+        .art-info {
+            margin-top: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .art-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.4rem; color: #1e293b; line-height: 1.4; }
+        .art-meta { font-family: sans-serif; font-size: 0.9rem; color: #64748b; margin-bottom: 0.4rem; }
+        
+        /* Book Publication Badge */
+        .book-badge {
+            display: inline-block;
+            font-family: sans-serif;
+            font-size: 0.8rem;
+            background-color: #e5ecf0;
+            color: #2c3e50;
+            padding: 0.2rem 0.6rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            align-self: flex-start;
+            border-radius: 2px;
+        }
+
+        /* Contact/Inquiry Trigger */
+        .contact-btn {
+            display: inline-block;
+            text-align: center;
+            background-color: #1e293b;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            margin-top: auto;
+            font-family: sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+        }
+        .contact-btn:hover { background-color: #475569; }
+
+        /* Footer styling */
+        footer {
+            margin-top: 10rem;
+            text-align: center;
+            font-family: sans-serif;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
+            padding: 3rem 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Biography & Studio Profile Header Page Element -->
+        <header>
+            <h1>Ian Harley Marshall</h1>
+            <p class="subtitle">1933 – 2016 • Renowned Marine Artist & Architect</p>
+            <p class="bio">
+                Scottish-born watercolorist Ian Harley Marshall was an internationally acclaimed authority on late 19th and early 20th-century naval architecture and maritime histories. Melding structural mastery from his architecture background with fine artistry, his works are celebrated for exceptional accuracy, fine command of atmospheric illumination, and expansive ocean scapes.
+            </p>
+            <p class="bio">
+                His curated visual retrospectives have been displayed extensively at institutions including the Royal Society of Marine Artists, Mystic Seaport, and the U.S. Navy Museum. A former president of the American Society of Marine Artists, his historic naval legacy is cataloged permanently across institutional spaces like the Royal Naval Museum (UK), the U.S. Naval Academy, and the National Maritime Museum.
+            </p>
+
+            <!-- Family Estate Contact Information Panel -->
+            <div class="estate-contact-panel">
+                <h3>Estate Contact & Purchase Inquiries</h3>
+                <p>This portfolio is managed directly by Ian Marshall's daughters. For structural details, archival documentation, or acquisition requests, please contact us directly based on your region:</p>
+                <div class="contacts-grid">
+                    <div class="contact-person">
+                        <strong>Jessie Zarazaga</strong>
+                        <span>United States Contact</span>
+                        <a href="mailto:architect@://jessiemarshall.com: Ian Marshall Fine Art Portfolio">architect@jessiemarshall.com</a>
+                    </div>
+                    <div class="contact-person">
+                        <strong>Rebecca Lellis-Ferreira</strong>
+                        <span>United Kingdom Contact</span>
+                        <a href="mailto:rebecca@://waynemcgregor.com: Ian Marshall Fine Art Portfolio">rebecca@waynemcgregor.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Artwork Publications / Monographs Section -->
+            <div class="books-section">
+                <h3>Published Monographs & Artwork Volumes</h3>
+                <ul class="books-list">
+                    <li><a href="https://amazon.com" target="_blank">Passage East (PE)</a> – An artistic exploration of historical steamship travels through the Orient.</li>
+                    <li><a href="https://amazon.com" target="_blank">Armored Ships (AS / IP)</a> – Chronicling global transformations in industrial naval warfare ironclads.</li>
+                    <li><a href="https://amazon.com" target="_blank">Ironclads and Paddlers (IP)</a> – Classic structural watercolor renderings focusing on technological evolutions.</li>
+                    <li><a href="https://amazon.com" target="_blank">Cruisers (C)</a> – Historical documentation of versatile scout vessels and warships.</li>
+                    <li><a href="https://amazon.com" target="_blank">Flying Boats (FB)</a> – Honoring aviation's historical flying boats and maritime planes.</li>
