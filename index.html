@@ -1,216 +1,258 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ian Harley Marshall | Marine Artist Portfolio</title>
-    <style>
-        /* Modern Minimalist Art Theme */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: "Georgia", serif;
-            background-color: #fbfbfc;
-            color: #1e252b;
-            line-height: 1.7;
-            padding: 3rem 1.5rem;
-        }
-        .container { max-width: 1200px; margin: 0 auto; }
-
-        /* Biography Section */
-        header {
-            margin-bottom: 4rem;
-            border-bottom: 2px solid #eef2f5;
-            padding-bottom: 3.5rem;
-        }
-        h1 { font-size: 3rem; font-weight: 300; margin-bottom: 0.5rem; color: #0d1318; letter-spacing: -0.5px; }
-        .subtitle { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; color: #5c6b73; margin-bottom: 2rem; }
-        .bio { max-width: 850px; font-size: 1.15rem; color: #333f48; margin-bottom: 1.5rem; }
-        
-        /* Estate Contact Panel */
-        .estate-contact-panel {
-            background-color: #f8fafc;
-            border: 1px solid #cbd5e1;
-            padding: 2rem;
-            margin: 2.5rem 0;
-            max-width: 850px;
-        }
-        .estate-contact-panel h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: #0d1318; font-weight: 600; }
-        .estate-contact-panel p { font-size: 1.05rem; color: #475569; margin-bottom: 1rem; }
-        .contacts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-        .contact-person {
-            background: #fff;
-            padding: 1rem;
-            border: 1px solid #e2e8f0;
-        }
-        .contact-person strong { display: block; color: #1e293b; font-size: 1.1rem; }
-        .contact-person span { font-size: 0.9rem; color: #64748b; font-family: sans-serif; text-transform: uppercase; }
-        .contact-person a { color: #16a085; text-decoration: none; font-family: sans-serif; font-size: 0.95rem; display: block; margin-top: 0.5rem; }
-        .contact-person a:hover { text-decoration: underline; }
-
-        /* Publications & Monographs Section */
-        .books-section {
-            background-color: #f3f6f8;
-            padding: 2rem;
-            border-left: 4px solid #2c3e50;
-            margin-top: 2.5rem;
-            max-width: 850px;
-        }
-        .books-section h3 { font-size: 1.25rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; color: #1a252f; }
-        .books-list { list-style: square inside; font-size: 1.05rem; }
-        .books-list li { margin-bottom: 0.6rem; }
-        .books-list a { color: #16a085; text-decoration: none; font-style: italic; font-weight: bold; }
-        .books-list a:hover { text-decoration: underline; }
-
-        /* Categorized Dimensions Navigation */
-        .nav-dims {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-            background: #fff;
-            padding: 1rem;
-            border: 1px solid #eef2f5;
-        }
-        .nav-dims a {
-            font-family: sans-serif;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: #2c3e50;
-            padding: 0.4rem 0.8rem;
-            border: 1px solid #cbd5e1;
-            transition: all 0.2s ease;
-        }
-        .nav-dims a:hover { background: #2c3e50; color: #fff; }
-
-        /* Section Titles for Dimensions */
-        .dimension-group {
-            margin: 5rem 0 2rem 0;
-            border-bottom: 2px dashed #cbd5e1;
-            padding-bottom: 0.75rem;
-        }
-        .dimension-title { font-size: 2rem; font-weight: 400; color: #2c3e50; }
-
-        /* Paintings Gallery Grid */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 3rem;
-        }
-        .art-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            padding: 1.2rem;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
-            transition: transform 0.2s ease;
-        }
-        .art-card:hover { transform: translateY(-3px); }
-        .art-image {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 4 / 3;
-            object-fit: cover;
-            background-color: #f8fafc;
-            border: 1px solid #e2e8f0;
-        }
-        .art-info {
-            margin-top: 1.2rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        .art-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.4rem; color: #1e293b; line-height: 1.4; }
-        .art-meta { font-family: sans-serif; font-size: 0.9rem; color: #64748b; margin-bottom: 0.4rem; }
-        
-        /* Book Publication Badge */
-        .book-badge {
-            display: inline-block;
-            font-family: sans-serif;
-            font-size: 0.8rem;
-            background-color: #e5ecf0;
-            color: #2c3e50;
-            padding: 0.2rem 0.6rem;
-            font-weight: 600;
-            margin-bottom: 1.2rem;
-            align-self: flex-start;
-            border-radius: 2px;
-        }
-
-        /* Contact/Inquiry Trigger */
-        .contact-btn {
-            display: inline-block;
-            text-align: center;
-            background-color: #1e293b;
-            color: #fff;
-            text-decoration: none;
-            padding: 0.75rem 1rem;
-            margin-top: auto;
-            font-family: sans-serif;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            transition: background-color 0.2s ease;
-        }
-        .contact-btn:hover { background-color: #475569; }
-
-        /* Footer styling */
-        footer {
-            margin-top: 10rem;
-            text-align: center;
-            font-family: sans-serif;
-            font-size: 0.85rem;
-            color: #94a3b8;
-            border-top: 1px solid #e2e8f0;
-            padding: 3rem 0;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The paintings and legacy of marine artist Ian Harley Marshall (1933–2016).">
+  <title>Ian Harley Marshall | Marine Artist</title>
+  <style>
+    :root { --ink:#17242d; --muted:#66727a; --paper:#f7f5ef; --white:#fff; --line:#d8d6cf; --accent:#345a6f; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family:Georgia, 'Times New Roman', serif; color:var(--ink); background:var(--paper); line-height:1.6; }
+    a { color:inherit; }
+    header { position:sticky; top:0; z-index:20; background:rgba(247,245,239,.96); border-bottom:1px solid var(--line); }
+    .nav { max-width:1200px; margin:auto; padding:14px 24px; display:flex; justify-content:space-between; align-items:center; gap:24px; }
+    .brand { text-decoration:none; font-size:1.15rem; letter-spacing:.04em; }
+    nav a { text-decoration:none; margin-left:22px; font-family:Arial,sans-serif; font-size:.88rem; letter-spacing:.06em; text-transform:uppercase; }
+    main { max-width:1200px; margin:auto; padding:0 24px; }
+    .hero { min-height:76vh; display:grid; grid-template-columns:1.05fr .95fr; align-items:center; gap:64px; padding:70px 0; }
+    .hero img { width:100%; display:block; box-shadow:0 16px 45px rgba(0,0,0,.14); }
+    .eyebrow { font-family:Arial,sans-serif; text-transform:uppercase; letter-spacing:.16em; font-size:.75rem; color:var(--muted); }
+    h1 { font-weight:400; font-size:clamp(3rem,7vw,6.4rem); line-height:.94; margin:.18em 0 .25em; }
+    .dates { font-size:1.25rem; color:var(--muted); }
+    .intro { font-size:1.2rem; max-width:38rem; }
+    section { padding:78px 0; border-top:1px solid var(--line); }
+    h2 { font-weight:400; font-size:clamp(2rem,4vw,3.4rem); margin:0 0 28px; }
+    .about { display:grid; grid-template-columns:1fr 1fr; gap:64px; }
+    .about p { margin-top:0; }
+    .gallery-head { display:flex; justify-content:space-between; align-items:end; gap:30px; margin-bottom:32px; }
+    .gallery-head p { max-width:34rem; color:var(--muted); margin:0; }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:34px 24px; }
+    .card { min-width:0; }
+    .image-wrap { aspect-ratio:4/3; background:#e7e4dc; overflow:hidden; display:grid; place-items:center; cursor:zoom-in; }
+    .image-wrap img { width:100%; height:100%; object-fit:contain; display:block; background:#eeeae1; }
+    .placeholder { padding:24px; text-align:center; color:#7c7a73; font-family:Arial,sans-serif; font-size:.85rem; letter-spacing:.03em; }
+    .meta { padding-top:13px; }
+    .inv { font-family:Arial,sans-serif; color:var(--muted); font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; }
+    .title { font-size:1.05rem; line-height:1.35; margin:3px 0 10px; }
+    .inquire { font-family:Arial,sans-serif; font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; text-decoration:none; border-bottom:1px solid var(--ink); }
+    .contact-box { display:grid; grid-template-columns:1.2fr 1fr; gap:64px; }
+    .contacts { display:grid; gap:20px; }
+    .contact-name { font-size:1.15rem; }
+    .contact-role { color:var(--muted); font-family:Arial,sans-serif; font-size:.86rem; }
+    footer { max-width:1200px; margin:auto; padding:30px 24px 50px; color:var(--muted); font-family:Arial,sans-serif; font-size:.82rem; }
+    dialog { width:min(1100px,94vw); max-height:94vh; border:0; padding:0; background:#111; box-shadow:0 20px 80px rgba(0,0,0,.5); }
+    dialog::backdrop { background:rgba(0,0,0,.78); }
+    dialog img { display:block; width:100%; max-height:88vh; object-fit:contain; }
+    .close { position:absolute; top:10px; right:12px; width:42px; height:42px; border:0; border-radius:50%; background:rgba(255,255,255,.9); font-size:24px; cursor:pointer; }
+    @media (max-width:850px) { .hero,.about,.contact-box { grid-template-columns:1fr; gap:32px; } .hero { padding:45px 0; } .grid { grid-template-columns:repeat(2,1fr); } nav { display:none; } }
+    @media (max-width:560px) { main { padding:0 16px; } .nav { padding:12px 16px; } .grid { grid-template-columns:1fr; } section { padding:55px 0; } }
+  </style>
 </head>
 <body>
+<header>
+  <div class="nav">
+    <a class="brand" href="#top">Ian Harley Marshall</a>
+    <nav><a href="#about">About</a><a href="#paintings">Paintings</a><a href="#contact">Contact</a></nav>
+  </div>
+</header>
+<main id="top">
+  <section class="hero" style="border-top:0">
+    <div>
+      <div class="eyebrow">Marine artist & architect</div>
+      <h1>Ian Harley<br>Marshall</h1>
+      <div class="dates">1933–2016</div>
+      <p class="intro">Watercolors of ships, harbors, naval history and the changing maritime world.</p>
+    </div>
+    <img src="images/ian-marshall.jpg" alt="Ian Harley Marshall" fetchpriority="high">
+  </section>
 
-    <div class="container">
-        <!-- Biography & Studio Profile Header Page Element -->
-        <header>
-            <h1>Ian Harley Marshall</h1>
-            <p class="subtitle">1933 – 2016 • Renowned Marine Artist & Architect</p>
-            <p class="bio">
-                Scottish-born watercolorist Ian Harley Marshall was an internationally acclaimed authority on late 19th and early 20th-century naval architecture and maritime histories. Melding structural mastery from his architecture background with fine artistry, his works are celebrated for exceptional accuracy, fine command of atmospheric illumination, and expansive ocean scapes.
-            </p>
-            <p class="bio">
-                His curated visual retrospectives have been displayed extensively at institutions including the Royal Society of Marine Artists, Mystic Seaport, and the U.S. Navy Museum. A former president of the American Society of Marine Artists, his historic naval legacy is cataloged permanently across institutional spaces like the Royal Naval Museum (UK), the U.S. Naval Academy, and the National Maritime Museum.
-            </p>
+  <section id="about" class="about">
+    <div><div class="eyebrow">About the artist</div><h2>Ian Marshall</h2></div>
+    <div>
+      <p>Ian Marshall (1933–2016) was a British marine artist whose work focused on ships, naval history and maritime settings. His architectural background informed the precision and structure of his watercolors.</p>
+      <p>Marshall was a Fellow and past President of the American Society of Marine Artists. His work was exhibited at institutions including the U.S. Navy Museum, the U.S. Naval Academy Museum, Mystic Seaport and the Royal Society of Marine Artists’ annual exhibition. His paintings are also held in maritime and naval collections in the United States and Europe.</p>
+      <p>His watercolors also illustrated Paul Kennedy’s <em>Victory at Sea: Naval Power and the Transformation of the Global Order in World War II</em>, published by Yale University Press in 2022.</p>
+    </div>
+  </section>
 
-            <!-- Family Estate Contact Information Panel -->
-            <div class="estate-contact-panel">
-                <h3>Estate Contact & Purchase Inquiries</h3>
-                <p>This portfolio is managed directly by Ian Marshall's daughters. For structural details, archival documentation, or acquisition requests, please contact us directly based on your region:</p>
-                <div class="contacts-grid">
-                    <div class="contact-person">
-                        <strong>Jessie Zarazaga</strong>
-                        <span>United States Contact</span>
-                        <a href="mailto:architect@://jessiemarshall.com: Ian Marshall Fine Art Portfolio">architect@jessiemarshall.com</a>
-                    </div>
-                    <div class="contact-person">
-                        <strong>Rebecca Lellis-Ferreira</strong>
-                        <span>United Kingdom Contact</span>
-                        <a href="mailto:rebecca@://waynemcgregor.com: Ian Marshall Fine Art Portfolio">rebecca@waynemcgregor.com</a>
-                    </div>
-                </div>
-            </div>
+  <section id="paintings">
+    <div class="gallery-head">
+      <div><div class="eyebrow">Selected inventory</div><h2>Paintings</h2></div>
+      <p>Paintings are identified by Ian Marshall’s inventory number. Images will be added as the family archive is digitized.</p>
+    </div>
+    <div id="gallery" class="grid"></div>
+  </section>
 
-            <!-- Artwork Publications / Monographs Section -->
-            <div class="books-section">
-                <h3>Published Monographs & Artwork Volumes</h3>
-                <ul class="books-list">
-                    <li><a href="https://amazon.com" target="_blank">Passage East (PE)</a> – An artistic exploration of historical steamship travels through the Orient.</li>
-                    <li><a href="https://amazon.com" target="_blank">Armored Ships (AS / IP)</a> – Chronicling global transformations in industrial naval warfare ironclads.</li>
-                    <li><a href="https://amazon.com" target="_blank">Ironclads and Paddlers (IP)</a> – Classic structural watercolor renderings focusing on technological evolutions.</li>
-                    <li><a href="https://amazon.com" target="_blank">Cruisers (C)</a> – Historical documentation of versatile scout vessels and warships.</li>
-                    <li><a href="https://amazon.com" target="_blank">Flying Boats (FB)</a> – Honoring aviation's historical flying boats and maritime planes.</li>
+  <section id="contact" class="contact-box">
+    <div><div class="eyebrow">Inquiries</div><h2>Paintings &amp; availability</h2><p>This site is managed by Ian Marshall’s daughters. For information about a painting, availability, provenance, or acquisition, please contact Jessie in the United States or Rebecca in the United Kingdom.</p></div>
+    <div class="contacts">
+      <div><div class="contact-name">Jessie Zarazaga</div><div class="contact-role">United States</div><a href="mailto:architect@jessiemarshall.com">architect@jessiemarshall.com</a></div>
+      <div><div class="contact-name">Rebecca Lellis-Ferreira</div><div class="contact-role">United Kingdom</div><a href="mailto:rebecca@waynemcgregor.com">rebecca@waynemcgregor.com</a></div>
+    </div>
+  </section>
+</main>
+<footer>© 2026 Ian Harley Marshall Estate. Managed by his family.</footer>
+
+<dialog id="lightbox"><button class="close" aria-label="Close">×</button><img id="lightbox-image" alt=""></dialog>
+<script>
+  const paintings = [
+      { inv: 34, title: 'YAVUZ and MIDILLI off Constantinople, 1914' },
+      { inv: 67, title: 'MISSISSIPPI, Tokyo Bay, 1945' },
+      { inv: 72, title: 'ZARA and sister ships, Naples, 1938' },
+      { inv: 87, title: 'FRANCE & MONTCALM, Corfu, 1916' },
+      { inv: 92, title: 'WISCONSIN, Suez Canal, August, 1990' },
+      { inv: 100, title: 'USS AUGUSTA, Sydney Harbour, 1934' },
+      { inv: 134, title: 'USS PONTOOSUC, Fort Fisher, North Carolina, 1865' },
+      { inv: 144, title: 'HMS ANDROMACHE, REDWING & TURQUOISE' },
+      { inv: 193, title: 'RMS MALWA, Plymouth Sound, 1910' },
+      { inv: 194, title: 'RMS KAISAR-I-HIND, Port Said, 1914' },
+      { inv: 195, title: 'The Boat Deck, RMS VICTORIA, 1889' },
+      { inv: 199, title: 'PS EUXINE, Southampton, 1848 PS (Paddle Steamer)' },
+      { inv: 235, title: 'HMS KENT, Last Hope Inlet, 1915' },
+      { inv: 243, title: 'Sydney, SS NORTHAM, entering Port Jackson, 1862' },
+      { inv: 246, title: 'USS LEXINGTON & SARATOGA in Puget Sound, 1936' },
+      { inv: 252, title: 'Embarkation at Tilbury, 1937' },
+      { inv: 254, title: 'SS LECONTE DE LISLE, Haiphong, 1924' },
+      { inv: 261, title: 'SS JOHAN DE WITT, lying off the Bund, Shanghai, 1921' },
+      { inv: 265, title: 'SS ETHIOPIA, Zanzibar, 1875' },
+      { inv: 279, title: 'HMS FURIOUS, 1938' },
+      { inv: 281, title: 'HMS VALIANT, 1943' },
+      { inv: 296, title: 'Latecoere 300 CROIX DU SUD Natal, Brazil, 1934' },
+      { inv: 308, title: 'Short S 30 Empire boat, CABOT, Berth 108,' },
+      { inv: 309, title: 'Short S 23 Empire boat, CALYPSO, Mombasa, 1938' },
+      { inv: 316, title: 'Boeing 314 ATLANTIC CLIPPER on the Tagus River,' },
+      { inv: 322, title: 'Sikorsky S-40, CARIBBEAN CLIPPER at Panama City, 1931' },
+      { inv: 332, title: 'HMS BRILLIANT, Bermuda, 1894' },
+      { inv: 334, title: 'Short S-23 Empire boat CASSIOPEIA boarding at Luxor,' },
+      { inv: 335, title: 'Short S 25 Sunderland III at Mount Batten, Plymouth, 1943' },
+      { inv: 336, title: 'RMS VICEROY OF INDIA, Suez Canal, 1929' },
+      { inv: 338, title: 'Boeing B-314, YANKEE CLIPPER, taking off from Bowery' },
+      { inv: 343, title: 'Curtiss NC-4 at Lisbon during the first Atlantic crossing' },
+      { inv: 348, title: 'USS VINCENNES with Curtis SOC-3 floatplane, 1942' },
+      { inv: 354, title: 'Breguet Bre 530 Saigon, ALGERIE, over Tunis' },
+      { inv: 361, title: 'SS KARANJA, Durban, 1937' },
+      { inv: 362, title: 'Latecoere 631, Martinique, 1947' },
+      { inv: 366, title: 'Short-Mayo S 20 MERCURY floatplane immediately after' },
+      { inv: 373, title: 'Short S 25 Hythe, HIMALAYA over the Pyramids, Cairo,' },
+      { inv: 374, title: 'Sikorsky S-42, JAMAICA CLIPPER, Rio de Janeiro, 1936' },
+      { inv: 381, title: 'Consolidated PBY-2 GUBA at Diego Garcia with the cruiser' },
+      { inv: 382, title: 'Short S 45A Solent MkIV AOTEAROA landing at Waitemata' },
+      { inv: 385, title: 'S.S. CARONIA, Cape Town, 1951' },
+      { inv: 425, title: 'HMS BLAKE in the Hamoaze 1892' },
+      { inv: 431, title: 'SMS NURNBERG Marquesas Islands 1914' },
+      { inv: 440, title: 'HMS CERES, Departing Grand Harbour, Malta, 1922' },
+      { inv: 444, title: 'HMS BARRACOUTA, Passing through the Heads, Knysna,' },
+      { inv: 445, title: 'SMS GEFION, Off Egypt Point, Cowes, Isle of Wight, 1897' },
+      { inv: 446, title: 'SMS SANKT GEORG and ASPERN, Hampton Roads,' },
+      { inv: 450, title: 'Hamburg-Sudamerikanische Linie, CAP TRAFALGAR and' },
+      { inv: 452, title: 'HMS COCHRANE leaving Portsmouth, 1912' },
+      { inv: 453, title: 'BRUIX and JAUREGUIBERRY, Toulon Roads, 1897' },
+      { inv: 469, title: 'HMS ROYAL SOVEREIGN, Kilindini, 1942' },
+      { inv: 471, title: 'Bassin San Marco, towards Isola San Giorgio, SS TISZA, Lloyd Austriaco' },
+      { inv: 472, title: 'CHELYUSKIN in the Artic ice, 1934' },
+      { inv: 490, title: 'HMAS CANBERRA, Sydney, 1928' },
+      { inv: 492, title: 'Cardiff docks (SS CLAYMORE) 1948 WC 10 by 14' },
+      { inv: 494, title: 'SS UMGENI in drydock at Capetown (Bullard King) 1951' },
+      { inv: 495, title: 'Beira docks, Mozambique (AFRICA and others) 1953' },
+      { inv: 497, title: 'SS CITY OF NORWICH' },
+      { inv: 501, title: "Sovereign's Escort, WARRIOR & MEDINA, Malta, 1911" },
+      { inv: 502, title: 'HMS DORSETSHIRE, Simonstown, 1941' },
+      { inv: 503, title: 'HMS EMPEROR OF INDIA, Valetta, Malta 1924' },
+      { inv: 509, title: 'The Southeaster spreads a tablecloth over the Tavern of the Seas' },
+      { inv: 510, title: 'All berths are occupied; Kilindini, Mombasa Is. 1951' },
+      { inv: 511, title: 'SS CARONIA, . Capetown, 1951' },
+      { inv: 519, title: 'USS HOLLANDIA CVE-97, Ulithi Atoll, April 1945' },
+      { inv: 520, title: 'USS WASP CV-7, Greenock, April 11, 1942. Spitfires for Malta.' },
+      { inv: 521, title: 'Devastators spreading their wings, USS ENTERPRISE CV-6, 1942.' },
+      { inv: 522, title: 'HMS HERMES, Port Said, 1924' },
+      { inv: 524, title: 'Martin TM4-1 torpedo planes; USS LEXINGTON & SARATOGA, 1929.' },
+      { inv: 525, title: 'USS INTREPID CV-11 loading munitions, 1944.' },
+      { inv: 526, title: 'Backup. USS SARATOGA CV-3 & HMS VICTORIOUS, Noumea, 1943.' },
+      { inv: 527, title: 'USS INDEPENDENCE CV-62 at sea, 1965' },
+      { inv: 528, title: 'USS ENTERPRISE CVAN-65, Golden Gate, San Francisco, 1975' },
+      { inv: 529, title: 'HMS ENGADINE, off Rosyth, 1916' },
+      { inv: 530, title: 'HMS ARGUS and Sopwith Cuckoo, Firth of Forth, 1918' },
+      { inv: 531, title: 'HMS CAMPANIA in an Artic convoy off the North Cape, 1944' },
+      { inv: 532, title: 'USS LANGLEY, Hampton Roads, 1924' },
+      { inv: 533, title: 'HIJMS RYUJU in the Inland Sea, 1939' },
+      { inv: 534, title: 'HIJMS KAGA, Kure, 1930' },
+      { inv: 535, title: 'HIJMS SHOKAKU, Coral Sea. May, 1942' },
+      { inv: 536, title: 'HMS STARLING, Liverpool, 1943' },
+      { inv: 542, title: 'HMS ARIADNE, Panama Canal, Feb, 1944' },
+      { inv: 544, title: 'HMS SHEFFIELD, Gilbraltar, 1941' },
+      { inv: 545, title: 'HMS CARNARVON CASTLE, Cape Town, 1940' },
+      { inv: 546, title: 'Four-stackers in Bedford Basin, Halifax, 1941' },
+      { inv: 547, title: 'RICHELIEU, Dakar, 1941' },
+      { inv: 548, title: 'YAMASHIRO, Straits of Surigao October, 1944' },
+      { inv: 550, title: 'U-boats at Lisahally, May 1945' },
+      { inv: 551, title: 'HMS UPHOLDER, Lazaretto Creek, Malta, 1941' },
+      { inv: 552, title: 'HMS PINK on convoy duty 1943' },
+      { inv: 553, title: 'Destroyers returning from Dunkirk, 1940' },
+      { inv: 555, title: 'USS BON HOMME RICHARD & Grumman F6F Hellcat, 1945' },
+      { inv: 557, title: 'HMS ROBERTS, D-Day, 1944' },
+      { inv: 558, title: 'LÜTZOW & SCHARNHORST, Narvick, 1943' },
+      { inv: 560, title: 'USS ARCHERFISH & HIJMS SHINANO, 1944' },
+      { inv: 562, title: 'The port of Kilindini, Mombasa, 1938.' },
+      { inv: 568, title: 'Liberty Ship at sea, 1943.' },
+      { inv: 569, title: 'The Port of Chittagong, 1913. East Bengal' },
+      { inv: 570, title: 'SS SINGAPORE, Cochin, 1951. P&O Line' },
+      { inv: 571, title: 'RMS KAISAR-I-HIND, Gibraltar, 1920, P&O Line' },
+      { inv: 573, title: 'Shipping at Kilindini wharves, Mombasa, 1953.' },
+      { inv: 574, title: 'RMS MOOLTAN, at Bombay, 1906. P & O Line.' },
+      { inv: 575, title: 'SS CITY OF NEW YORK, in the Hudson, 1888. Inman Line.' },
+      { inv: 576, title: 'SS REX, off Genoa, 1931. "Italia" line.' },
+      { inv: 577, title: 'SS SLAMAT, in transit north of Suez, 1925. Rotterdam Lloyd Line.' },
+      { inv: 583, title: 'USS TEXAS off Rosyth, 1918' },
+  ];
+
+  const gallery = document.getElementById('gallery');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+
+  function inquiryLink(p) {
+    const subject = encodeURIComponent(`Ian Marshall painting inquiry — INV. ${p.inv}`);
+    const body = encodeURIComponent(`Hello Jessie and Rebecca,
+
+I am interested in Ian Marshall painting INV. ${p.inv}, “${p.title}”.
+
+Could you please send me more information about this work?
+
+Thank you.`);
+    return `mailto:architect@jessiemarshall.com?cc=rebecca@waynemcgregor.com&subject=${subject}&body=${body}`;
+  }
+
+  paintings.forEach(p => {
+    const card = document.createElement('article');
+    card.className = 'card';
+    const wrap = document.createElement('div');
+    wrap.className = 'image-wrap';
+    const img = document.createElement('img');
+    img.src = `images/INV_${p.inv}.jpg`;
+    img.alt = p.title;
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.addEventListener('error', () => {
+      wrap.innerHTML = '<div class="placeholder">Image currently unavailable</div>';
+      wrap.style.cursor = 'default';
+    });
+    img.addEventListener('click', () => {
+      lightboxImage.src = img.src;
+      lightboxImage.alt = p.title;
+      lightbox.showModal();
+    });
+    wrap.appendChild(img);
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    const inv = document.createElement('div'); inv.className='inv'; inv.textContent=`Inventory ${p.inv}`;
+    const title = document.createElement('div'); title.className='title'; title.textContent=p.title;
+    const link = document.createElement('a'); link.className='inquire'; link.href=inquiryLink(p); link.textContent='Inquire about this painting';
+    meta.append(inv,title,link); card.append(wrap,meta); gallery.appendChild(card);
+  });
+
+  document.querySelector('.close').addEventListener('click', () => lightbox.close());
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.close(); });
+</script>
+</body>
+</html>
